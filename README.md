@@ -1,5 +1,7 @@
 # ansible-role-ssh
 
+[![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-ssh.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-ssh)
+
 Ansible role for configuring SSH access on an Ubuntu server
 
 This role disables root login and password authentication.
