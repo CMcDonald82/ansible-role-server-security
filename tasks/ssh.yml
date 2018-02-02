@@ -2,17 +2,17 @@
 
 - name: SSH | Update SSH config for additional security
   lineinfile:
-    dest: "{{ server_security_ssh_config_path }}"
+    dest: /etc/ssh/sshd_config
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
     state: present
   with_items:
     - regexp: "^PermitRootLogin"
-      line: "PermitRootLogin {{ server_security_ssh_permit_root_login }}"
+      line: "PermitRootLogin {{ (server_security_ssh_permit_root_login) | ternary('yes', 'no') }}"
     - regexp: "^#?PasswordAuthentication"
-      line: "PasswordAuthentication {{ server_security_ssh_password_authentication }}"
+      line: "PasswordAuthentication {{ (server_security_ssh_password_authentication) | ternary('yes', 'no') }}"
   notify: restart ssh
-  
+
 # - name: Disable root login
 #   lineinfile:
 #     dest: /etc/ssh/sshd_config

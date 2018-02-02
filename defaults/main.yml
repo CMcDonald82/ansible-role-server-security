@@ -1,9 +1,8 @@
 ---
 
 # SSH
-server_security_ssh_config_path: /etc/ssh/sshd_config
-server_security_ssh_password_authentication: "no"
-server_security_ssh_permit_root_login: "no"
+server_security_ssh_password_authentication: no
+server_security_ssh_permit_root_login: no
 
 # Fail2Ban
 server_security_enable_fail2ban: true
