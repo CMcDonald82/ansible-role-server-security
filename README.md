@@ -32,13 +32,13 @@ Leave this set to true (the default) if you want to install & enable fail2ban. I
 ## Example Playbook
 
 ```
-- name: Configure SSH on Ubuntu server
+- name: Configure server security including SSH and fail2ban on Ubuntu server
   hosts: all
   remote_user: "{{ remote_username }}"
   become: yes
 
   roles:
-    - role: ssh_role
+    - role: server_security_role
 ```
 
 ## Dependencies 
