@@ -1,17 +1,30 @@
 ---
 
-- name: Disable root login
+- name: SSH | Update SSH config for additional security
   lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "^PermitRootLogin"
-    line: "PermitRootLogin no"
+    dest: "{{ server_security_ssh_config_path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
     state: present
+  with_items:
+    - regexp: "^PermitRootLogin"
+      line: "PermitRootLogin {{ server_security_ssh_permit_root_login }}"
+    - regexp: "^#?PasswordAuthentication"
+      line: "PasswordAuthentication {{ server_security_ssh_password_authentication }}"
   notify: restart ssh
+  
+# - name: Disable root login
+#   lineinfile:
+#     dest: /etc/ssh/sshd_config
+#     regexp: "^PermitRootLogin"
+#     line: "PermitRootLogin no"
+#     state: present
+#   notify: restart ssh
 
-- name: Disable password authentication
-  lineinfile:
-    dest: /etc/ssh/sshd_config
-    regexp: "^#?PasswordAuthentication"
-    line: "PasswordAuthentication no"
-    state: present
-  notify: restart ssh
+# - name: Disable password authentication
+#   lineinfile:
+#     dest: /etc/ssh/sshd_config
+#     regexp: "^#?PasswordAuthentication"
+#     line: "PasswordAuthentication no"
+#     state: present
+#   notify: restart ssh
