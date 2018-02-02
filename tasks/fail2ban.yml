@@ -1,0 +1,15 @@
+---
+
+- name: Fail2Ban | Install fail2ban
+  apt: 
+    name: fail2ban
+    state: present
+    update_cache: yes
+
+- name: Fail2Ban | Ensure fail2ban is enabled and running on boot
+  service:
+    name: fail2ban
+    state: started
+    enabled: yes
+
+
