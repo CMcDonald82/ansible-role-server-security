@@ -1,6 +1,6 @@
-# ansible-role-ssh
+# ansible-role-server-security
 
-[![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-ssh.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-ssh)
+[![Build Status](https://travis-ci.org/CMcDonald82/ansible-role-server-security.svg?branch=master)](https://travis-ci.org/CMcDonald82/ansible-role-server-security)
 
 Ansible role for configuring SSH access and fail2ban on an Ubuntu server
 
